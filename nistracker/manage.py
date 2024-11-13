@@ -1,11 +1,27 @@
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
 import os
 import sys
 
+from core.diary import DiaryDriver
+from core.timetable import TimeTable
+from core.thread_worker import WorkerThread, Task
+
+worker_thread = WorkerThread()
+diary_driver = None
+tt_loader = TimeTable()
+
+is_diary_ready = dict()
+
+def diary_driver_init():
+    global diary_driver
+    diary_driver = DiaryDriver()
+
+
+async def diary_driver_get_ready():
+    global diary_driver
+    await diary_driver.open_loginpage()
+
 
 def main():
-    """Run administrative tasks."""
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "nistracker.settings")
     try:
         from django.core.management import execute_from_command_line
@@ -19,4 +35,24 @@ def main():
 
 
 if __name__ == "__main__":
+    worker_thread.start()
+
+    worker_thread.add_task(
+        task=Task(
+            diary_driver_init,
+            args=[],
+            kwargs={},
+            result_dict={},  # it will be None or DiaryDriver
+            asynchronous=False
+        )
+    )
+    worker_thread.add_task(
+        task=Task(
+            diary_driver_get_ready,
+            args=[],
+            kwargs={},
+            result_dict=is_diary_ready,
+            asynchronous=True
+        )
+    )
     main()

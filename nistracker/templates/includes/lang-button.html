@@ -1,0 +1,21 @@
+{% load static %}
+
+<div class="language-icon-wrapper">
+  <button class="language-button">
+    <img src="{% static 'img/light_language.png' %}" alt="LANG" class="lang-icon">
+  </button>
+  <div class="language-list">
+    <form method="post" action="{% url 'loginpage:login' %}">
+    {% csrf_token %}
+      <button class="lang-eng" name="lang-eng">
+        <p class="text5">Eng</p>
+      </button>
+      <button class="lang-ru" name="lang-ru">
+        <p class="text6">Ru</p>
+      </button>
+      <button class="lang-kk" name="lang-kk">
+        <p class="text7">Kk</p>
+      </button>
+    </form>
+  </div>
+</div>

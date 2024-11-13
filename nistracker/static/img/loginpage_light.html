@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles_light.css">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+<body>
+    <div class="loginbar-wrapper">
+        <div class="loginbar">
+            <img src="logo.png" alt="logo" class="logo">
+            <p class="text1">NISTracker</p>
+            <p class="text2">Login</p>
+            <p class="text3">Use your IIN and password</p>
+            <input type="text" placeholder="IIN" class="input">
+            <input type="password" placeholder="Password" class="input">
+            <button class="button1">
+                <p class="text4">Continue</p>
+                <img src="right_arrow.png" alt="->" class="right-arrow">
+            </button>
+            <div class="footer-section">
+                <form action="form">
+                    <!-- {{%% csrf_token %%}} -->
+                    <button class="footer-button">
+                        <img src="light_theme.png" alt="*" class="img1">
+                    </button> 
+                </form>
+                <form action="form"></form>
+                    <!-- {{%% csrf_token %%}} -->
+                    <button class="footer-button">
+                        <img src="light_telegram.png" alt="*", class="img2">
+                    </button> 
+                </form>
+                <form action="form"></form>
+                    <!-- {{%% csrf_token %%}} -->
+                    <button class="footer-button">
+                        <img src="light_github.png" alt="*" class="img3">
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="language-icon-wrapper">
+        <button class="language-button">
+            <img src="light_language.png" alt="LANG" class="lang-icon">
+        </button>
+        <div class="language-list">
+            <button class="lang-eng">
+                <p class="text5">Eng</p>
+            </button>
+            <button class="lang-ru">
+                <p class="text6">Ru</p>
+            </button>
+            <button class="lang-kk">
+                <p class="text7">Kk </p>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
